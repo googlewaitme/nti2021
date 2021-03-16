@@ -118,6 +118,7 @@ class PasportApi:
         # согласие на обработку ПД
         self.session.profile.personal_data = photo
 
+
 class SchoolDataApi:
     def __init__(self, session):
         self.session = session
