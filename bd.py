@@ -100,6 +100,9 @@ class PasportApi:
         self.session.profile.number = number
         self.session.save() 
 
+    def set_place_of_pasport(self, place):
+        self.session.profile.place_of_pasport = place
+        self.session.save()
 
     def set_code(self, code):
         # код подразделения

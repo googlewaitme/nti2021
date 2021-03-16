@@ -25,6 +25,7 @@ class Profile(BaseModel):
     number = CharField(null=True)
     code = CharField(null=True)
     photo_of_pasport = CharField(null=True)
+    place_of_pasport = CharField(null=True)
     
     personal_data = CharField(null=True)
     date_of_give = DateField(null=True)

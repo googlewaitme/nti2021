@@ -1,3 +1,6 @@
+from docxtpl import DocxTemplate 
+from constants import monthes
+
 class Saver:
     # TODO
     """
@@ -15,5 +18,38 @@ class Saver:
 
 
 def generic_document(session):
-    # TODO
-    pass
+    doc = DocxTemplate('static/template.docx')
+
+    sl = {
+        'name': user.name,
+        'surname': user.surname, 
+        'father_name': user.father_name,
+        'date_of_give': user.profile.date_of_give,
+        'place_of_pasport': user.profile.place_of_pasport,
+        'day': date.today().day,
+        'month': monthes[date.today().month - 1],
+        'seria': user.profile.seria,
+        'nomer': user.profile.nomer
+    }
+    doc.render(sl)
+    doc.save('Перс_данные.docx')
+
+if __name__ == '__main__':
+    from models import *
+    from datetime import date
+
+    user = User(
+        name='Bulat', 
+        surname='Zaripov', 
+        father_name='Ruslanovi4',
+        email='bulat.zar-1203@yandex.ru',
+        sex='M', 
+        password='LALALALA',
+        profile=Profile.create()
+    )
+    user.profile.seria = '8016'
+    user.profile.nomer = '234234'
+    user.profile.date_of_give = date(2016, 12, 3)
+    user.profile.place_of_pasport = 'Mrakovo'
+    user.save()
+    generic_document(user)

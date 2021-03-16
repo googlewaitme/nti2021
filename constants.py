@@ -30,3 +30,26 @@ achievments = [
 # https://yandex.ru/support/mail/mail-clients/others.html
 univer_email = 'info.sgu@yandex.ru'
 univer_password = 'infosgu2021'
+
+
+
+# ________________ #
+# ________________ #
+# ________________ #
+
+
+monthes = [
+    'января', 'февраля', 
+    'марта', 'апреля', 
+    'мая', 'июня', 'июля', 
+    'августа', 'сентября', 
+    'ноября', 'декабря'
+]
+
+
+
+
+
+
+
+
