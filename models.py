@@ -13,24 +13,8 @@ class BaseModel(Model):
         database = database
 
 
-class User(BaseModel):
-    """
-        Статусы: 
-         1) student
-         2) worker
-         3) decanat
-    """
-    name = CharField()
-    surname = CharField()
-    father_name = CharField()
-    sex = CharField(choices=((0, 'M'), (1, 'F')))
-    email = CharField()
-    password = CharField(null=True)
-    status = CharField(default="student")
-
 
 class Profile(BaseModel):
-    user = ForeignKeyField(User, backref='profile')
     birth_date = DateField(null=True)
     phone = CharField(null=True)
     place_of_birth = CharField(null=True)
@@ -45,12 +29,28 @@ class Profile(BaseModel):
 
 
 
+class User(BaseModel):
+    """
+        Статусы: 
+         1) student
+         2) worker
+         3) decanat
+    """
+    name = CharField()
+    surname = CharField()
+    father_name = CharField()
+    sex = CharField(choices=((0, 'M'), (1, 'F')))
+    email = CharField()
+    password = CharField(null=True)
+    status = CharField(default="student")
+    profile = ForeignKeyField(Profile)
+
+
+
 if __name__ == '__main__':
     create_tables()
-"""    user = User.create(name='Feodot', surname='Feofanov', 
+    user = User.create(name='Feodot', surname='Feofanov', 
         father_name='FFF', sex='G', 
         email='feodot@mail.ru', password='lala', 
-        status='student')
-    Profile.create(user=user)
+        status='student', profile=Profile.create())
 
-"""
