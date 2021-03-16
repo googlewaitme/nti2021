@@ -2,6 +2,15 @@ from models import *
 
 
 class RegistrationApi:
+    """
+    a = RegistrationApi()
+    a.register_user(params)
+    
+    """
+
+    def __init__(self):
+        pass
+
     def check_email_is_unique(self, email):
         users = User.select().where(User.email==email)
         return len(users) == 0
