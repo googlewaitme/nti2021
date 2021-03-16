@@ -4,7 +4,7 @@ import re
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.setFixedSize(800, 600)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("background-color: white;")
         self.centralwidget.setObjectName("centralwidget")
@@ -63,9 +63,9 @@ class Ui_MainWindow(object):
 "")
         self.Enter.setObjectName("Enter")
         self.laabelName = QtWidgets.QLabel(self.frame)
-        self.laabelName.setGeometry(QtCore.QRect(30, 10, 101, 21))
+        self.laabelName.setGeometry(QtCore.QRect(30, 10, 150, 21))
         font = QtGui.QFont()
-        font.setPointSize(12)
+        font.setPointSize(14)
         self.laabelName.setFont(font)
         self.laabelName.setObjectName("laabelName")
         self.WrongMessage = QtWidgets.QLabel(self.frame)
@@ -75,9 +75,6 @@ class Ui_MainWindow(object):
         self.WrongMessage.setOpenExternalLinks(False)
         self.WrongMessage.setObjectName("WrongMessage")
         MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -111,3 +108,6 @@ class Ui_MainWindow(object):
     def wrongMes(self, text):
         _translate = QtCore.QCoreApplication.translate
         self.WrongMessage.setText(_translate("MainWindow", text))
+
+
+
