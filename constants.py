@@ -11,7 +11,7 @@ physic = 1
 inform = 0
 
 
-cources = [ 
+cources = [
     Cource('Прикладная математика', inform, True, True), 
     Cource('Информатика и вычислительная техника', inform, True, True),
     Cource('Автоматизация управления в технических системах', inform, False, True),

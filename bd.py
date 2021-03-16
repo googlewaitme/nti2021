@@ -2,15 +2,6 @@ from models import *
 
 
 class RegistrationApi:
-    def check_email(self, email):
-        """Возвращает список из двух элементов, примеры:
-            (True, 'all okey'),
-            (False, 'Не правильно введен эмейл')
-            (False, 'Такой емэйл уже есть')
-        """
-        # TODO BULAT
-        return (False, 'Такой email уже существует')
-
     def check_email_is_unique(self, email):
         users = User.select().where(User.email==email)
         return len(users) == 0
@@ -19,7 +10,7 @@ class RegistrationApi:
         """
         Пример исполльзования:
             register_user(name='Bulat', surname='Zaripov', father_name='Ruslanovi4',
-                            email='bulat.zar-1203@yandex.ru', password='LALALALA')
+                            email='bulat.zar-1203@yandex.ru', sex='M', password='LALALALA')
         """
         params['profile'] = Profile.create()
         User.create(**params)
@@ -76,21 +67,25 @@ class PersonalDataApi:
     def set_birth_date(self, date):
         # Дата должна быть в формате datetime.date
         self.session.profile.birth_date = date 
+        self.session.save() 
 
     def set_phone(self, phone):
         self.session.profile.phone = phone 
+        self.session.save() 
 
     def set_place_of_birth(self, place):
         self.session.profile.place_of_birth = place
+        self.session.save() 
 
     def set_need_of_dorm(self, need_of_dorm):
         # Нужно ли общежитие
         self.session.profile.need_of_dorm = need_of_dorm
+        self.session.save() 
 
     def set_photo_of_anket(self, photo):
         # СМОТРИ photo.py
         self.session.profile.photo_of_anket = photo
-
+        self.session.save() 
 
 class PasportApi:
     """
@@ -103,30 +98,63 @@ class PasportApi:
     def set_data(self, seria, number):
         self.session.profile.seria = seria
         self.session.profile.number = number
+        self.session.save() 
+
 
     def set_code(self, code):
         # код подразделения
         self.session.profile.code = code
+        self.session.save() 
+
 
     def set_date_of_give(self, date):
         self.session.profile.date_of_give = date 
+        self.session.save() 
+
 
     def set_photo_of_pasport(self, photo):
         self.session.profile.set_photo_of_pasport = photo
+        self.session.save() 
+
 
     def set_personal_data(self, photo):
         # согласие на обработку ПД
         self.session.profile.personal_data = photo
+        self.session.save() 
+
 
 
 class SchoolDataApi:
     def __init__(self, session):
         self.session = session
 
-    def set_photo_of_attest(self, photo):
-        # TODO 
-        pass
+    def set_attest(self, number, photo):
+        self.session.profile.photo_of_attest = photo 
+        self.session.profile.number_of_attest = number
+        self.session.save() 
+
 
     def set_type_of_payment(self, type_of_payment):
-        # TODO
-        pass 
+        self.session.profile.type_of_payment = type_of_payment
+        self.session.save() 
+
+
+    def set_course(self, course):
+        self.session.profile.course = course
+        self.session.save() 
+
+
+    def set_exams(self, rus=0, math=0, inf=0, phys=0):
+        self.session.profile.exam_rus = rus 
+        self.session.profile.exam_math = math 
+        self.session.profile.exam_inf = inf
+        self.session.profile.exam_phys = phys
+        self.session.save() 
+
+    def set_dop_points(self, sum_points):
+        self.session.profile.dop_points = sum_points
+        self.session.save() 
+
+    def set_original_docs(self, original):
+        self.session.profile.original_docs = original
+        self.session.save() 

@@ -20,12 +20,30 @@ class Profile(BaseModel):
     place_of_birth = CharField(null=True)
     need_of_dorm = BooleanField(null=True)
     photo_of_anket= CharField(null=True)
+    
     seria = CharField(null=True)
     number = CharField(null=True)
     code = CharField(null=True)
     photo_of_pasport = CharField(null=True)
+    
     personal_data = CharField(null=True)
     date_of_give = DateField(null=True)
+
+    photo_of_attest = CharField(null=True)
+    number_of_attest = CharField(null=True)
+
+    # budjet of payment
+    type_of_payment = CharField(null=True)
+    course = CharField(null=True)
+
+    exam_rus = IntegerField(default=0)
+    exam_math = IntegerField(default=0)
+    exam_inf = IntegerField(default=0)
+    exam_phys = IntegerField(default=0)
+
+    dop_points = IntegerField(default=0)
+
+    original_docs = BooleanField(default=False)
 
 
 
