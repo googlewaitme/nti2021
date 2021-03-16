@@ -28,7 +28,7 @@ class RegistrationApi:
         Проверяет по введенным паролю и почте, что такой пользователь существует и может войти в аккаунт
         """
         users = User.select().where(User.password==password and User.email==email)
-        return not len(users) == 0:
+        return not len(users) == 0
     
     def user_get_session(self, password, email):
         """
