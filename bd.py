@@ -21,6 +21,7 @@ class RegistrationApi:
             register_user(name='Bulat', surname='Zaripov', father_name='Ruslanovi4',
                             email='bulat.zar-1203@yandex.ru', password='LALALALA')
         """
+        params['profile'] = Profile.create()
         User.create(**params)
 
     def user_is_exist(self, password, email):
@@ -74,26 +75,21 @@ class PersonalDataApi:
 
     def set_birth_date(self, date):
         # Дата должна быть в формате datetime.date
-        # TODO
-        pass
+        self.session.profile.birth_date = date 
 
     def set_phone(self, phone):
-        # TODO
-        pass 
+        self.session.profile.phone = phone 
 
     def set_place_of_birth(self, place):
-        # TODO 
-        pass
+        self.session.profile.place_of_birth = place
 
-    def set_need_of_dorm(self, need_of):
+    def set_need_of_dorm(self, need_of_dorm):
         # Нужно ли общежитие
-        # TODO 
-        pass
+        self.session.profile.need_of_dorm = need_of_dorm
 
-    def set_photo_of_anket(self, photo_path):
+    def set_photo_of_anket(self, photo):
         # СМОТРИ photo.py
-        # TODO 
-        pass 
+        self.session.profile.photo_of_anket = photo
 
 
 class PasportApi:
@@ -105,23 +101,32 @@ class PasportApi:
         self.session = session
 
     def set_data(self, seria, number):
-        # TODO 
-        pass 
+        self.session.profile.seria = seria
+        self.session.profile.number = number
 
     def set_code(self, code):
         # код подразделения
-        # TODO 
-        pass
+        self.session.profile.code = code
 
     def set_date_of_give(self, date):
-        # TODO 
-        pass
+        self.session.profile.date_of_give = date 
 
     def set_photo_of_pasport(self, photo):
-        # TODO 
-        pass
+        self.session.profile.set_photo_of_pasport = photo
 
     def set_personal_data(self, photo):
         # согласие на обработку ПД
+        self.session.profile.personal_data = photo
+
+
+class SchoolDataApi:
+    def __init__(self, session):
+        self.session = session
+
+    def set_photo_of_attest(self, photo):
         # TODO 
         pass
+
+    def set_type_of_payment(self, type_of_payment):
+        # TODO
+        pass 
