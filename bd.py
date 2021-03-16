@@ -46,8 +46,9 @@ class PersonalDataApi:
     def __init__(self, session):
         self.session = session
 
-    def set_adress(self, index, city, street, house, flat):
+    def set_adress(self, adress):
         # Устанавливает адресс пользователя
+        # просто одна большая строка с адрессом
         # TODO BULAT
         pass
 
@@ -56,20 +57,20 @@ class PersonalDataApi:
             api.set_name(name='not Bulat')
             Если меняется только имя пользователя
         """
-        # TODO
-        pass
+        self.session.name = name
+        self.session.save()
 
     def set_email(self, email):
-        # TODO
-        pass
+        self.session.email = email
+        self.session.save()
 
     def set_password(self, password):
-        # TODO
-        pass
+        self.session.password = password
+        self.session.save()
 
     def set_sex(self, sex):
-        # TODO
-        pass
+        self.session.sex = sex
+        self.session.save()
 
     def set_birth_date(self, date):
         # Дата должна быть в формате datetime.date
@@ -85,6 +86,7 @@ class PersonalDataApi:
         pass
 
     def set_need_of_dorm(self, need_of):
+        # Нужно ли общежитие
         # TODO 
         pass
 
