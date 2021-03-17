@@ -13,7 +13,6 @@ class BaseModel(Model):
         database = database
 
 
-
 class Profile(BaseModel):
     birth_date = DateField(null=True)
     phone = CharField(null=True)
