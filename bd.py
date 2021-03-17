@@ -1,6 +1,9 @@
 from models import *
 
 
+def give_all_users():
+    return list(User.select())
+
 class RegistrationApi:
     """
     a = RegistrationApi()
@@ -50,8 +53,8 @@ class PersonalDataApi:
     def set_adress(self, adress):
         # Устанавливает адресс пользователя
         # просто одна большая строка с адрессом
-        # TODO BULAT
-        pass
+        self.session.profile.adress = adress
+        self.session.save()
 
     def set_name(self, surname=None, name=None, father_name=None):
         """
@@ -96,6 +99,7 @@ class PersonalDataApi:
         self.session.profile.photo_of_anket = photo
         self.session.save() 
 
+
 class PasportApi:
     """
         Здесь будут содержаться все модули взаимодействия с анкетными данными
@@ -133,7 +137,6 @@ class PasportApi:
         # согласие на обработку ПД
         self.session.profile.personal_data = photo
         self.session.save() 
-
 
 
 class SchoolDataApi:

@@ -20,6 +20,7 @@ class Profile(BaseModel):
     need_of_dorm = BooleanField(null=True)
     photo_of_anket= CharField(null=True)
     
+    adress = CharField(null=True)
     seria = CharField(null=True)
     number = CharField(null=True)
     code = CharField(null=True)
@@ -45,6 +46,8 @@ class Profile(BaseModel):
 
     original_docs = BooleanField(default=False)
 
+    anket_status = CharField(default='new') # in_work, full, full_no_orig
+
 
 
 class User(BaseModel):
@@ -64,11 +67,9 @@ class User(BaseModel):
     profile = ForeignKeyField(Profile)
 
 
-
 if __name__ == '__main__':
     create_tables()
     user = User.create(name='Feodot', surname='Feofanov', 
         father_name='FFF', sex='G', 
         email='feodot@mail.ru', password='lala', 
         status='student', profile=Profile.create())
-

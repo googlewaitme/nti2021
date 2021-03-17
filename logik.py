@@ -13,4 +13,3 @@ class Checker:
         except:
             return False
         return True
-
